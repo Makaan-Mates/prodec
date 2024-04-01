@@ -1,4 +1,4 @@
-import sharedConfig from "../tailwind-config/tailwind.config";
+import sharedConfig from "@repo/tailwind-config/tailwind.config";
 
 import type { Config } from "tailwindcss";
 
