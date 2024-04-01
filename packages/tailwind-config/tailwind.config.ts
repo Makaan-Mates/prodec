@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 
-const config: Config = {
+export const config: Config = {
   content: [
     "../../apps/**/*.{js,ts,jsx,tsx,mdx}",
 
