@@ -1,17 +1,20 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
+  "globalDependencies": ["**/.env.*local", "**/.env"],
+  "globalDotEnv": [".env"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": ["GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET"]
     },
     "lint": {
       "dependsOn": ["^lint"]
     },
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "dotEnv": [".env"]
     }
   }
 }
