@@ -18,6 +18,8 @@ model Admin {
   email     String      @unique
   name      String?
   username  String      @unique
+  role      String      @default("admin")
+  image     String?
   workspace Workspace[]
   Deck      Deck[]
 }
