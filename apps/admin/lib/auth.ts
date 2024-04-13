@@ -20,6 +20,7 @@ interface Session {
     username: string;
     image: string | null;
     role: string;
+    newUser: boolean;
   };
 }
 
@@ -33,15 +34,7 @@ export const NEXT_AUTH_CONFIG = {
   secret: process.env.NEXTAUTH_SECRET ?? "",
 
   callbacks: {
-    async signIn({
-      user,
-      account,
-      profile,
-      email,
-      credentials,
-    }: {
-      user: Admin;
-    }) {
+    async signIn({ user }: { user: Admin }) {
       // Find the user in the Admin table
       const dbUser = await db.admin.findUnique({
         where: {
@@ -60,17 +53,15 @@ export const NEXT_AUTH_CONFIG = {
             username: `${usernameBase}`,
             image: user.image ?? null,
             role: "admin",
+            newUser: true,
           },
         });
-        console.log(`New user signed up: ${JSON.stringify(user)}`);
-      } else {
-        console.log(`Existing user signed in: ${JSON.stringify(user)}`);
       }
-
-      return "/onboarding"; // Allow the sign-in
+      return true;
     },
-    async session({ session }: { session: Session,}) {
+    async session({ session }: { session: Session }) {
       // Fetch additional user information from the Admin table
+
       const dbUser = await db.admin.findUnique({
         where: {
           email: session.user.email,
@@ -83,6 +74,7 @@ export const NEXT_AUTH_CONFIG = {
         session.user.role = dbUser.role;
         session.user.username = dbUser.username;
         session.user.image = dbUser.image;
+        session.user.newUser = dbUser.newUser;
       }
 
       return session;
