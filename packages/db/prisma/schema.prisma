@@ -22,6 +22,7 @@ model Admin {
   image     String?
   workspace Workspace[]
   Deck      Deck[]
+  newUser   Boolean     @default(true)
 }
 
 model Workspace {

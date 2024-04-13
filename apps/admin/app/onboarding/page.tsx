@@ -2,6 +2,7 @@
 import { useSession, signOut, signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import OnboardingHeader from "../../components/OnboardingHeader";
 
 interface Session {
   user: {
@@ -42,8 +43,24 @@ const page = () => {
   };
 
   return (
-    <div className="bg-[#161616] min-h-screen p-4 flex flex-col items-center justify-center">
-      <div className="flex flex-col w-96 text-white border p-6 rounded-md">
+    <div className="bg-gradient-to-b from-[#0F151A] via-[#090D10] to-[#090D10] min-h-screen  flex flex-col">
+      <OnboardingHeader />
+      <div className="flex items-center justify-center">
+        <section className="mt-[5.38rem] w-[30.43rem] ">
+          <div>
+            <div className="text-[1.5rem]  text-[#E3E6E8] text-center">
+              Create a new workspace
+            </div>
+            <div className="text-[#6F757B] mt-[1.25rem] text-center text-[0.9375rem]">
+              Workspaces are shared environments where you can create decks,
+              roadmaps and share among your customers.
+            </div>
+          </div>
+          <div className="form bg-[#12171C] w-[30.43rem] h-[28.81rem] rounded-lg mt-[2rem]"></div>
+        </section>
+      </div>
+
+      {/* <div className="flex flex-col w-96 text-white border p-6 rounded-md">
         <span>WorkSpace</span>
 
         {session && session?.user ? (
@@ -63,7 +80,7 @@ const page = () => {
           Sign Out
         </button>
         <button onClick={onboardingCompleted}>Continue</button>
-      </div>
+      </div> */}
     </div>
   );
 };
