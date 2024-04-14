@@ -4,6 +4,6 @@
     "outDir": "dist",
     "types": ["node"]
   },
-  "include": ["src"],
+  "include": ["src", "src/shadcn/ui/*.tsx", "src/lib",],
   "exclude": ["node_modules", "dist"]
 }
