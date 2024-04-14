@@ -3,6 +3,8 @@ import { useSession, signOut, signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import OnboardingHeader from "../../components/OnboardingHeader";
+import InputwithLabel from "@repo/ui/components/InputwithLabel";
+// import TestBox from "@repo/ui/components/TestBox"
 
 interface Session {
   user: {
@@ -33,7 +35,7 @@ const page = () => {
           "http://localhost:3000/api/user/new-user",
           {
             userId: session.user.id,
-          },
+          }
         );
         console.log(response.data);
       }
@@ -46,7 +48,7 @@ const page = () => {
     <div className="bg-gradient-to-b from-[#0F151A] via-[#090D10] to-[#090D10] min-h-screen  flex flex-col">
       <OnboardingHeader />
       <div className="flex items-center justify-center">
-        <section className="mt-[5.38rem] w-[30.43rem] ">
+        <section className="max-xl:mt-[5.38rem]  2xl:mt-[5.38rem] w-[30.43rem] ">
           <div>
             <div className="text-[1.5rem]  text-[#E3E6E8] text-center">
               Create a new workspace
@@ -56,7 +58,35 @@ const page = () => {
               roadmaps and share among your customers.
             </div>
           </div>
-          <div className="form bg-[#12171C] w-[30.43rem] h-[28.81rem] rounded-lg mt-[2rem]"></div>
+          <div className="form bg-[#12171C] w-[30.43rem] h-[28.81rem] rounded-lg mt-[2rem] flex flex-col items-center  p-6">
+            <div className="w-full flex flex-col gap-6  ">
+              <InputwithLabel
+                inputtype={"text"}
+                label={"Workspace name"}
+                placeholder={"Your company name"}
+                readOnly={false}
+              />
+              <InputwithLabel
+                inputtype={"text"}
+                label={"WorkspaceURL"}
+                placeholder={"prodec.app/workspace/"}
+                readOnly={true}
+              />
+              <div className="border-b border-1 "></div>
+              <InputwithLabel
+                inputtype={"text"}
+                label={"Your Profile"}
+                placeholder={"Full name"}
+                readOnly={false}
+              />
+              <InputwithLabel
+                inputtype={"text"}
+                label={"Role"}
+                placeholder={"eg. Product designer"}
+                readOnly={false}
+              />
+            </div>
+          </div>
         </section>
       </div>
 
