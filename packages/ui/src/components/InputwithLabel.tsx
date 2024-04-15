@@ -7,10 +7,15 @@ interface Params {
   inputtype: string;
   label: string;
   placeholder: string;
-  readOnly:boolean
+  readOnly: boolean;
 }
 
-const InputwithLabel = ({ inputtype, label, placeholder,readOnly }: Params) => {
+const InputwithLabel = ({
+  inputtype,
+  label,
+  placeholder,
+  readOnly,
+}: Params) => {
   return (
     <div>
       <div className="w-full max-w-sm  flex flex-col gap-2">
@@ -24,8 +29,14 @@ const InputwithLabel = ({ inputtype, label, placeholder,readOnly }: Params) => {
           type={inputtype}
           id={inputtype}
           placeholder={placeholder}
-          className="bg-[#12171C] px-4 placeholder-[#6F757B] text-sm font-medium file-border-2 border-red-700 text-red-600 "
+          className="onboarding-input bg-[#12171C] px-6 py-4 placeholder-[#6F757B] text-sm font-medium file-border-2  "
           readOnly={readOnly}
+          style={{
+            margin: "0.5rem 0",
+            padding: "0.5rem 1rem",
+            border: "1px solid #20272C",
+            borderRadius: "0.375rem",
+          }}
         />
       </div>
     </div>
