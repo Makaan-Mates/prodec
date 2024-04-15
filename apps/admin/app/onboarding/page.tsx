@@ -35,7 +35,7 @@ const page = () => {
           "http://localhost:3000/api/user/new-user",
           {
             userId: session.user.id,
-          }
+          },
         );
         console.log(response.data);
       }
@@ -72,7 +72,7 @@ const page = () => {
                 placeholder={"prodec.app/workspace/"}
                 readOnly={true}
               />
-              <div className="border-b border-1 "></div>
+              <div className="border-b border-1 border-[#1B2327]"></div>
               <InputwithLabel
                 inputtype={"text"}
                 label={"Your Profile"}
